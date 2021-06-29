@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div id="container">
+            <h1 id="title">Library</h1>
+
+            <div id="top-bar">
+
+                <div class="search">
+                    <input type="text" id="search-bar">
+                    <button type="button" id="btnSearch">Search</button>
+                </div>
+
+                <div class="dropdown">
+                    <button id="btnDropdown">Sort by</button>
+                    <div class="dropdown-content">
+                        <a id="aTitle" href="#">Name</a>
+                        <a id="aAuthor" href="#">Author</a>
+                        <a id="aPages" href="#">Pages</a>
+                        <a id="aCompleted" href="#">Completed</a>
+                    </div>
+                </div>
+                <button id="btnOrder">Asc</button>
+
+                <button id="btnAdd">Add book</button>
+            </div>
+
+            <div id="book-container"></div>
+
+            <div class="form-popup" id="formAdd">
+                <form class="form-container">
+                    <ul>
+                        <li><label for="name">Title</label></li>
+                        <li><input type="text" placeholder="Enter book title" id="txtTitle" required></li>
+                        <li><label for="author">Author</label></li>
+                        <li><input type="text" placeholder="Enter author's name" id="txtAuthor" required></li>
+                        <li><label for="pages">Pages</label></li>
+                        <li><input type="text" placeholder="Enter number of pages" id="txtPages" required></li>
+                        <li><label for="cover">Cover image url</label></li>
+                        <li><input type="text" placeholder="Enter image url" id="txtCover" required></li>
+                        <li><label for="completed">Have you read it</label><input type="checkbox" id="chkCompleted"></li>
+                        <li><button type="submit" id="btnSubmitAdd">Add</button></li>
+                        <li><button type="submit" id="btnCancel" onclick="closeForm()">Cancel</button></li>
+                    </ul>
+                </form>
+            </div>
+
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>

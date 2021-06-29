@@ -1,0 +1,138 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    background-color:azure;
+}
+
+button {
+    cursor: pointer;
+    background-color:azure;
+    color: black;
+    font-size: 13px;
+}
+
+#title {
+    font-size: 60px;
+    color: rgb(214, 250, 255);
+    text-align: center;
+    background-image: url('/lib.jpg');
+    height: 100px; /*change*/
+    margin: 0;
+
+}
+
+#top-bar {
+    background-color:#3b535b;
+    height: 50px; /*change*/
+}
+
+#top-bar button {
+    display: inline;
+    padding: 5px;
+    border: none;
+    margin-top: 10px;
+    border-radius: 3px;
+}
+
+.search {
+    display: inline;
+    margin: 0 100px 0 35px;
+}
+#search-bar {
+    width: 300px;
+    margin-right: 5px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin: 0 10px 0 10px;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.dropdown-content a:hover {background-color: #ddd;}
+.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover #btnDropdown {background-color: #89b2c0;}
+
+#btnAdd {
+    float: right;
+    width: 200px;
+    margin-right: 35px;
+}
+
+.book {
+    display: inline;
+    float: left;
+    width: 280px;
+    height: 400px;
+    margin: 20px;
+    border: 1px solid #3b535b;
+    color: black;
+}
+
+.form-popur {
+    display: none;
+    
+    z-index: 9;
+}
+.form-container {
+    width: 500px;
+    height: 650px;
+    background-color: azure;
+    padding: 10px;
+    border: 3px solid #3b535b;
+}
+.form-container input[type=text] {
+    width: 85%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+}
+.form-container input[type=text]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+.form-container button {
+    color: azure;
+    padding: 16px 20px;
+    border: none;
+    font-size: 16px;
+    width: 85%;
+    margin: 20px;
+    opacity: 0.8;
+}
+.form-container button:hover {
+    opacity: 1;
+}
+.form-container #btnSubmitAdd {
+    background-color: #3b535b;
+}
+.form-container #btnCancel {
+    background-color: red;
+}
+#formAdd {
+    display: none;
+    position: fixed;
+    left: 35%;
+    top: 8%;
+}
+.form-container li {
+    list-style-type: none;
+    padding: 0;
+}
+#chkCompleted {
+    margin-left: 20px;
+}
