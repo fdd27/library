@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Times New Roman', Times, serif;
     font-size: 16px;
     background-color:azure;
 }
@@ -9,11 +9,14 @@ button {
     background-color:azure;
     color: black;
     font-size: 13px;
+    border-radius: 3px;
+    padding: 5px;
+    border: none;
 }
 
 #title {
-    font-size: 60px;
-    color: rgb(214, 250, 255);
+    font-size: 85px;
+    color: rgb(255, 255, 255);
     text-align: center;
     background-image: url('/lib.jpg');
     height: 100px; /*change*/
@@ -28,10 +31,7 @@ button {
 
 #top-bar button {
     display: inline;
-    padding: 5px;
-    border: none;
     margin-top: 10px;
-    border-radius: 3px;
 }
 
 .search {
@@ -48,6 +48,7 @@ button {
     display: inline-block;
     margin: 0 10px 0 10px;
 }
+
 .dropdown-content {
     display: none;
     position: absolute;
@@ -56,14 +57,18 @@ button {
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
+
 .dropdown-content a {
     color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
 }
+
 .dropdown-content a:hover {background-color: #ddd;}
+
 .dropdown:hover .dropdown-content {display: block;}
+
 .dropdown:hover #btnDropdown {background-color: #89b2c0;}
 
 #btnAdd {
@@ -75,18 +80,76 @@ button {
 .book {
     display: inline;
     float: left;
-    width: 280px;
-    height: 400px;
+    width: 340px;
+    height: 500px;
     margin: 20px;
     border: 1px solid #3b535b;
     color: black;
+    cursor: pointer;
 }
 
-.form-popur {
+.formBook {
     display: none;
-    
+    font-size: 20px;
+    width: 338px;
+    height: 498px;
+    border: 1px solid azure;
+    color: white;
+    z-index: 9;
+    background-color: #3b535b;
+    cursor: default;
+}
+
+.formBook ul {
+    list-style-type: none;
+}
+
+.formBook p {
+    font-weight: bold;
+    margin: 20px auto 5px auto;
+}
+
+.formBook label {
+    margin: 0;
+}
+
+.formBook button {
+    display: inline;
+    position: relative;
+    margin: 50px 0px 20px 0px;
+    opacity: 0.7;
+    font-size: 20px;
+    width: 125px;
+}
+
+.formBook .btnDelete {
+    background-color: red;
+    color: white;
+    float: right;
+    margin-right: 30px;
+    margin-left: 10px;
+}
+
+.formBook .btnHide {
+    float: left;
+    margin-left: 30px;
+    margin-right: 10px;
+}
+
+.formBook button:hover {
+    opacity: 1;
+}
+
+.formBook .chkRead {
+    width: 28%;
+    margin: 0 80px 0 0;
+}
+
+.form-popup {
+    display: none;
     z-index: 9;
 }
+
 .form-container {
     width: 500px;
     height: 650px;
@@ -94,6 +157,7 @@ button {
     padding: 10px;
     border: 3px solid #3b535b;
 }
+
 .form-container input[type=text] {
     width: 85%;
     padding: 15px;
@@ -101,10 +165,12 @@ button {
     border: none;
     background: #f1f1f1;
 }
+
 .form-container input[type=text]:focus {
     background-color: #ddd;
     outline: none;
 }
+
 .form-container button {
     color: azure;
     padding: 16px 20px;
@@ -112,27 +178,33 @@ button {
     font-size: 16px;
     width: 85%;
     margin: 20px;
-    opacity: 0.8;
+    opacity: 0.7;
 }
+
 .form-container button:hover {
     opacity: 1;
 }
+
 .form-container #btnSubmitAdd {
     background-color: #3b535b;
 }
+
 .form-container #btnCancel {
     background-color: red;
 }
+
 #formAdd {
     display: none;
     position: fixed;
     left: 35%;
     top: 8%;
 }
+
 .form-container li {
     list-style-type: none;
     padding: 0;
 }
+
 #chkCompleted {
     margin-left: 20px;
 }
