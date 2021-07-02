@@ -8,25 +8,26 @@ button {
     cursor: pointer;
     background-color:azure;
     color: black;
-    font-size: 13px;
+    font-size: 16px;
     border-radius: 3px;
     padding: 5px;
     border: none;
 }
 
 #title {
+    display: flex;
+    text-align: center;
+    justify-content: center;
     font-size: 85px;
     color: rgb(255, 255, 255);
-    text-align: center;
     background-image: url('/lib.jpg');
-    height: 100px; /*change*/
+    height: 100px;
     margin: 0;
-
 }
 
 #top-bar {
     background-color:#3b535b;
-    height: 50px; /*change*/
+    height: 55px;
 }
 
 #top-bar button {
@@ -38,8 +39,10 @@ button {
     display: inline;
     margin: 0 100px 0 35px;
 }
+
 #search-bar {
     width: 300px;
+    height: 25px;
     margin-right: 5px;
 }
 
@@ -82,7 +85,7 @@ button {
     float: left;
     width: 340px;
     height: 500px;
-    margin: 20px;
+    margin: 40px;
     border: 1px solid #3b535b;
     color: black;
     cursor: pointer;
@@ -141,8 +144,45 @@ button {
 }
 
 .formBook .chkRead {
-    width: 28%;
-    margin: 0 80px 0 0;
+    margin-left: 40px;
+    margin-right: 10px;
+    appearance: none;
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    background-color: azure;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.formBook .chkRead:after {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f00c";
+    font-size: 16px;
+    color: #3b535b;
+    display: none;
+}
+
+.formBook .chkRead:hover {
+    background-color: #a5a5a5;
+}
+
+.formBook .chkRead:checked {
+    background-color: azure;
+}
+
+.formBook .chkRead:checked::after {
+    display: block;
+}
+
+.formBook .txtRead {
+    margin-right: 100px;
+}
+
+.formBook .checkboxWrap {
+    display: flex;
+    align-content: center;
 }
 
 .form-popup {

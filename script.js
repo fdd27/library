@@ -1,4 +1,4 @@
-const library = [];
+let library = [];
 
 addBookToLibrary('Sapiens: A Brief History of Humankind', 'Yuval Noah Harari', 443, true, 'https://images-na.ssl-images-amazon.com/images/I/41yu2qXhXXL._SX324_BO1,204,203,200_.jpg');
 addBookToLibrary('Meditations', 'Marcus Aurelius', 112, true, 'https://images-na.ssl-images-amazon.com/images/I/51cQEdN9KuL._SX331_BO1,204,203,200_.jpg');
@@ -16,6 +16,20 @@ btnAdd.addEventListener('click', openForm);
 btnCancel.addEventListener('click', closeForm);
 btnSubmitAdd.addEventListener('click', submitBook);
 
+console.log(localStorage.getItem("library"));
+
+if (localStorage.getItem("library")) {
+    getLibrary();
+} else {
+    setLibrary();
+}
+
+/*if (storageAvailable('localStorage')) {
+    console.log('storage uasble');
+} else {
+    console.log('sucks m8');
+}*/
+
 function Book(title, author, pages, completed, cover) {
     this.title = title;
     this.author = author;
@@ -27,6 +41,7 @@ function Book(title, author, pages, completed, cover) {
 function addBookToLibrary(title, author, pages, completed, cover) {
     const book = new Book(title, author, pages, completed, cover);
     library.push(book);
+    setLibrary();
 }
 
 function showBooks() {
@@ -55,21 +70,31 @@ function showBooks() {
             formBook.style.display = 'block';
         });
 
+        checkboxWrap = document.createElement('div');
+        formBook.appendChild(checkboxWrap);
+        checkboxWrap.classList.add('checkboxWrap');
+
         chkRead = document.createElement('input');
         chkRead.type = "checkbox";
-        formBook.appendChild(chkRead);
+        checkboxWrap.appendChild(chkRead);
         chkRead.classList.add('chkRead');
         if (book.completed) chkRead.checked = true;
         else chkRead.checked = false;
         chkRead.addEventListener('change', function() {
             if (this.checked) {
                 book.completed = true;
-                console.log(book.completed);
+                txtRead.innerText = 'Yes';
             } else {
                 book.completed = false;
-                console.log(book.completed);
+                txtRead.innerText = 'No';
             }
         });
+
+        txtRead = document.createElement('span');
+        checkboxWrap.appendChild(txtRead);
+        txtRead.classList.add('txtRead');
+        if (chkRead.checked) txtRead.innerText = 'Yes';
+        else txtRead.innerText = 'No';
 
         btnDelete = document.createElement('button');
         formBook.appendChild(btnDelete);
@@ -95,19 +120,19 @@ function submitBook() {
     inPages = document.querySelector('#txtPages').value;
     inCompleted = document.querySelector('#chkCompleted').checked;
     inCover = document.querySelector('#txtCover').value;
-    console.log(inCompleted); //log
     addBookToLibrary(inTitle, inAuthor, inPages, inCompleted, inCover);
     showBooks();
-    //clearForm();
     closeForm();
 }
 
 function openForm() {
     document.querySelector('#formAdd').style.display = 'block';
+    clearForm();
 }
 
 function closeForm() {
     document.querySelector('#formAdd').style.display = 'none';
+    clearForm();
 }
 
 function clearForm() {
@@ -116,4 +141,45 @@ function clearForm() {
     document.querySelector('#txtPages').value = '';
     document.querySelector('#chkCompleted').value = '';
     document.querySelector('#txtCover').value = '';
+}
+
+function getLibrary() {
+    const currentLibrary = JSON.parse(localStorage.getItem("library") || "[]");
+    library = currentLibrary;
+
+    console.log(currentLibrary);
+}
+
+function setLibrary() {
+    localStorage.setItem("library", JSON.stringify(library));
+    getLibrary();
+}
+
+function clearStorage() {
+    localStorage.clear();
+}
+
+function storageAvailable(type) {
+    var storage;
+    try {
+        storage = window[type];
+        var x = '__storage_test__';
+        storage.setItem(x, x);
+        storage.removeItem(x);
+        return true;
+    }
+    catch(e) {
+        return e instanceof DOMException && (
+            // everything except Firefox
+            e.code === 22 ||
+            // Firefox
+            e.code === 1014 ||
+            // test name field too, because code might not be present
+            // everything except Firefox
+            e.name === 'QuotaExceededError' ||
+            // Firefox
+            e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
+            // acknowledge QuotaExceededError only if there's something already stored
+            (storage && storage.length !== 0);
+    }
 }
