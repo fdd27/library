@@ -1,28 +1,34 @@
+//firebase.initializeApp(config);
+
 let library = [];
 
 addBookToLibrary('Sapiens: A Brief History of Humankind', 'Yuval Noah Harari', 443, true, 'https://images-na.ssl-images-amazon.com/images/I/41yu2qXhXXL._SX324_BO1,204,203,200_.jpg');
 addBookToLibrary('Meditations', 'Marcus Aurelius', 112, true, 'https://images-na.ssl-images-amazon.com/images/I/51cQEdN9KuL._SX331_BO1,204,203,200_.jpg');
 
-container = document.querySelector('#book-container');
-showBooks();
-
-btnSearch = document.querySelector('#btnSearch');
-btnOrder = document.querySelector('#btnOrder');
-btnAdd = document.querySelector('#btnAdd');
-btnCancel = document.querySelector('#btnCancel');
-btnSubmitAdd = document.querySelector('#btnSubmitAdd');
+const container = document.querySelector('#book-container');
+const btnSearch = document.querySelector('#btnSearch');
+const btnOrder = document.querySelector('#btnOrder');
+const btnAdd = document.querySelector('#btnAdd');
+const btnCancel = document.querySelector('#btnCancel');
+const btnSubmitAdd = document.querySelector('#btnSubmitAdd');
 
 btnAdd.addEventListener('click', openForm);
 btnCancel.addEventListener('click', closeForm);
 btnSubmitAdd.addEventListener('click', submitBook);
 
-console.log(localStorage.getItem("library"));
+showBooks();
+
+//Firebase database
+//const dbRefObject = firebase.database().ref().child('library');
+//dbRefObject.on('value', snap => console.log(snap.val()));
+
+/*console.log(localStorage.getItem("library"));
 
 if (localStorage.getItem("library")) {
     getLibrary();
 } else {
     setLibrary();
-}
+}*/
 
 /*if (storageAvailable('localStorage')) {
     console.log('storage uasble');
@@ -41,7 +47,7 @@ function Book(title, author, pages, completed, cover) {
 function addBookToLibrary(title, author, pages, completed, cover) {
     const book = new Book(title, author, pages, completed, cover);
     library.push(book);
-    setLibrary();
+    //setLibrary();
 }
 
 function showBooks() {
@@ -143,23 +149,23 @@ function clearForm() {
     document.querySelector('#txtCover').value = '';
 }
 
-function getLibrary() {
+/*function getLibrary() {
     const currentLibrary = JSON.parse(localStorage.getItem("library") || "[]");
     library = currentLibrary;
 
     console.log(currentLibrary);
-}
+}*/
 
-function setLibrary() {
+/*function setLibrary() {
     localStorage.setItem("library", JSON.stringify(library));
     getLibrary();
-}
+}*/
 
-function clearStorage() {
+/*function clearStorage() {
     localStorage.clear();
-}
+}*/
 
-function storageAvailable(type) {
+/*function storageAvailable(type) {
     var storage;
     try {
         storage = window[type];
@@ -182,4 +188,4 @@ function storageAvailable(type) {
             // acknowledge QuotaExceededError only if there's something already stored
             (storage && storage.length !== 0);
     }
-}
+}*/
